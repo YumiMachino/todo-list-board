@@ -2,34 +2,19 @@ import React, { useContext, useState } from 'react';
 import { FaTrash, FaSave } from 'react-icons/fa';
 import { GlobalContext } from '../context/GlobalState';
 
-const ToDoItem = ({ listItem, isNew }) => {
+const ToDoItem = ({ listItem }) => {
   const [itemContent, setItemContent] = useState(listItem.item);
 
   const { list } = useContext(GlobalContext);
-  const { deleteItem, addItem, updateItem } = useContext(GlobalContext);
+  const { deleteItem, updateItem } = useContext(GlobalContext);
 
   const saveClicked = (id) => {
-    console.log(id);
-    const filtered = list.filter((item) => item.id == id);
-    console.log('filtered', filtered);
-    // check it already in item,
-    if (filtered.length == 0) {
-      console.log('the item has not yet been saved');
-
-      let newItem = {
-        id: listItem.id,
-        item: itemContent,
-      };
-      //   listItem.item = itemContent;
-
-      addItem(newItem);
-      console.log('item added..?', newItem);
-      console.log('new list...', list);
-    }
-    // if it is, update the item here
-
-    // else add new Item
+    let target = list.filter((item) => item.id == id);
+    console.log('this is target: ', target);
+    target.item = itemContent;
+    updateItem(target);
     console.log('edit clicked');
+    console.log(list);
   };
 
   return (
@@ -51,7 +36,6 @@ const ToDoItem = ({ listItem, isNew }) => {
           value={`${itemContent}`}
           style={styles.inputStyle}
           onChange={(e) => setItemContent(e.target.value)}
-          placeholder={isNew ? `Enter item here...` : `...`}
         />
       </div>
     </div>

@@ -35,12 +35,20 @@
   flex-wrap: wrap;
 }
 
-.btn-wrapper {
+/* .btn-wrapper {
   width: 80vw;
   height: auto;
   margin: auto;
   text-align: right;
-}
+} */
+/* 
+.sub-container {
+  width: 80vw;
+  margin: 3rem auto 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+} */
 
 .add-btn {
   font-family: 'Caveat', cursive;
@@ -56,9 +64,6 @@
   outline: none;
   transition: all 0.2s;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  /* position: absolute;
-  top: 12rem;
-  right: 10rem; */
 }
 .add-btn:hover {
   background-color: var(--secondary-color);

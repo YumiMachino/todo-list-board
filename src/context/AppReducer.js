@@ -11,13 +11,16 @@ export default (state, action) => {
         list: state.list.filter((item) => item.id != action.payload),
       };
     case 'UPDATE_ITEM':
+      const updatedItem = action.payload;
+      const updatedList = state.list.map((item) => {
+        if (item.id === updatedItem.id) {
+          return updatedItem;
+        }
+        return item;
+      });
       return {
         ...state,
-        list: state.list.map((item) =>
-          item.id === action.payload.id
-            ? (item.item = action.payload.item)
-            : item.item
-        ),
+        list: updatedList,
       };
   }
 };
