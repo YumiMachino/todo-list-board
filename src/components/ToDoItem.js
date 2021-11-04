@@ -10,11 +10,9 @@ const ToDoItem = ({ listItem }) => {
 
   const saveClicked = (id) => {
     let target = list.filter((item) => item.id == id);
-    console.log('this is target: ', target);
+    target = target[0];
     target.item = itemContent;
     updateItem(target);
-    console.log('edit clicked');
-    console.log(list);
   };
 
   return (

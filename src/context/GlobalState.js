@@ -1,38 +1,28 @@
 // Initial state -> get info grom localstorage
 // add items
 // delete item
-import React, { createContext, useReducer } from 'react';
+import React, { createContext, useReducer, useEffect } from 'react';
 import AppReducer from './AppReducer';
 
-// initial state
-const sampleToDos = {
-  list: [
-    {
-      id: 1,
-      item: 'Do laundry',
-    },
-    {
-      id: 2,
-      item: 'Finish assignment',
-    },
-    {
-      id: 3,
-      item: 'Create to do app',
-    },
-    {
-      id: 4,
-      item: 'Study React',
-    },
-  ],
+const todos = {
+  list: [],
 };
 
 // Create context (context has Provider)
-export const GlobalContext = createContext(sampleToDos);
+export const GlobalContext = createContext(todos);
 
 // Provider component
 export const GlobalProvider = ({ children }) => {
   // state, and all the action
-  const [state, dispatch] = useReducer(AppReducer, sampleToDos);
+  // const [state, dispatch] = useReducer(AppReducer, sampleToDos);
+  const [state, dispatch] = useReducer(AppReducer, todos);
+
+  function getItem() {
+    dispatch({
+      type: 'GET_ITEM',
+      payload: '',
+    });
+  }
 
   // Actions
   function deleteItem(id) {
@@ -56,12 +46,11 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function createNewItem() {}
-
   return (
     <GlobalContext.Provider
       value={{
         list: state.list,
+        getItem,
         deleteItem,
         addItem,
         updateItem,
