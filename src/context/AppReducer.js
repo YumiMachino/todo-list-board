@@ -10,9 +10,6 @@ export default (state, action) => {
       } else {
         const parsedTodos = [];
         parsedTodos.list = JSON.parse(todos);
-        // convert string to obj
-        console.log('preparse:  ', todos);
-        console.log('post parse: ', parsedTodos);
         return {
           list: parsedTodos.list,
         };
@@ -28,12 +25,9 @@ export default (state, action) => {
         list: [action.payload, ...state.list],
       };
     case 'DELETE_ITEM':
-      console.log('item to be deleted', action.payload);
       const deletedList = state.list.filter(
         (item) => item.id != action.payload
       );
-      console.log(deletedList);
-
       localStorage.setItem('todos', JSON.stringify(deletedList));
 
       return {
@@ -51,7 +45,6 @@ export default (state, action) => {
       });
 
       localStorage.setItem('todos', JSON.stringify(updatedList));
-
       return {
         ...state,
         list: updatedList,

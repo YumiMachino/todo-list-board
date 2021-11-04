@@ -35,21 +35,6 @@
   flex-wrap: wrap;
 }
 
-/* .btn-wrapper {
-  width: 80vw;
-  height: auto;
-  margin: auto;
-  text-align: right;
-} */
-/* 
-.sub-container {
-  width: 80vw;
-  margin: 3rem auto 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-} */
-
 .add-btn {
   font-family: 'Caveat', cursive;
   font-size: 1.2rem;

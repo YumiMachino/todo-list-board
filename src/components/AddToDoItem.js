@@ -4,17 +4,14 @@ import { v4 as uuidv4 } from 'uuid';
 
 const AddToDoItem = () => {
   const [item, setItem] = useState('');
-
   const { addItem } = useContext(GlobalContext);
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     const newItem = {
       id: uuidv4(),
       item: item,
     };
-
     addItem(newItem);
     setItem('');
   };

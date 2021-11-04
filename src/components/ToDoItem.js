@@ -4,7 +4,6 @@ import { GlobalContext } from '../context/GlobalState';
 
 const ToDoItem = ({ listItem }) => {
   const [itemContent, setItemContent] = useState(listItem.item);
-
   const { list } = useContext(GlobalContext);
   const { deleteItem, updateItem } = useContext(GlobalContext);
 
